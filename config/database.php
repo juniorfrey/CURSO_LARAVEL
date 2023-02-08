@@ -15,6 +15,7 @@ return [
     |
     */
 
+    /* 'default' => env('DB_CONNECTION', 'mysql'), */
     'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
@@ -47,7 +48,7 @@ return [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
+            'port' => env('DB_PORT', '3307'),
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),

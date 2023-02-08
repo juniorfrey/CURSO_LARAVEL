@@ -16,10 +16,14 @@ use App\Http\Controllers\CursosController;
 */
 
 Route::get('/', HomeController::class);
+//Route::get('/cursos', [CursosController::class, 'index']);
 
-Route::get('/cursos', [CursosController::class, 'index']);
-Route::get('cursos/crear', [CursosController::class, 'create']);
-Route::get('cursos/{curso}', [CursosController::class, 'show']);
+// Grupos de rutas
+Route::controller(CursosController::class)->group(/* ['prefix' => 'cursos', 'middleware' => 'auth'], */ function (){
+    Route::get('cursos/',  'index');
+    Route::get('cursos/create',  'create');
+    Route::get('cursos/{show}',  'show');
+});
 
 Route::get('curso/{curso}/{categoria?}', [CursosController::class, 'show_categoria']);
 
