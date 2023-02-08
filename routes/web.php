@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CursosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,23 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    //return view('welcome');
-    return "Bienvenido a la pagina web de Fredys";
-});
+Route::get('/', HomeController::class);
 
-Route::get('/segunda', function () {
-    return "MI SEGUNDA RUTA";
-});
+Route::get('/cursos', [CursosController::class, 'index']);
+Route::get('cursos/crear', [CursosController::class, 'create']);
+Route::get('cursos/{curso}', [CursosController::class, 'show']);
 
-/* Route::get('cursos/{curso}', function ($curso) {
-    return "Bienvenido al curso: $curso";
-}); */
+Route::get('curso/{curso}/{categoria?}', [CursosController::class, 'show_categoria']);
 
-Route::get('cursos/{curso}/{categoria?}', function ($curso, $categoria = null) {
-    return $categoria ? "Bienvenido al curso: $curso de la categoria: $categoria" : "Bienvenido al curso: $curso";
-});
-
-Route::get('curso/api/crear', function () {
-     return "En esta pagina podras crear un curso";
-});
