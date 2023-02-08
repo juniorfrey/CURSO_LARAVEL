@@ -1,0 +1,7 @@
+ php artisan migrate // Se hace la migración
+ php artisan migrate:rollback // Reversar cambios en las migraciones
+ php artisan make:migration add_avatar_to_cursos_table // Modificar una tabla sin eliminar los datos
+
+// cambios en un campo de una tabla
+Ejemplos:  $table->string('name', 150)->change();
+Ejemplos:  $table->string('name', 150)->nullable->change();  // camnpo que acepta nulos.
