@@ -5,3 +5,22 @@
 // cambios en un campo de una tabla
 Ejemplos:  $table->string('name', 150)->change();
 Ejemplos:  $table->string('name', 150)->nullable->change();  // camnpo que acepta nulos.
+
+
+// Models
+Crear : php artisan make:model <Nombre modelo>
+Ingresar datos a modelo con tinker
+  Paso 1: php artisan tinker
+  Paso 2: use\Models\ModeloEjemplo
+  Paso 3: $modelo = new ModeloEjemplo;
+
+  Acciones
+  1 - Llenar objetos: 
+      $ejemplo->nombre = 'Nombre 1';
+      $ejemplo->edad = '15';
+
+  2 - Ver información del objeto:
+      $ejemplo;
+
+  3 - Guardar la información almacenada en el objeto:
+      $ejemplo->save(); // Se ejecuta el metodo save para guardar la información en la base de datos.
