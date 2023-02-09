@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Curso;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateCurso;
 
 class CursosController extends Controller
 {
@@ -18,19 +19,22 @@ class CursosController extends Controller
         return view('cursos.create');
     }
 
-    public function createPost(Request $Request){
+    public function createPost(CreateCurso $Request){
 
-        $Request->validate([
+       /*  $Request->validate([
             'name'        => 'required|max:255',
             'description' => 'required|min:10',
             'category'    => 'required'
-        ]);
+        ]); */
 
-        $curso = new Curso();
+        /* $curso = new Curso();
         $curso->name = $Request->name;
         $curso->description = $Request->description;
         $curso->category = $Request->category;
-        $curso->save();
+        $curso->save(); */
+        /* return $Request->all(); */
+        $curso = Curso::create($Request->all());
+
         return redirect()->route('cursos.show', $curso->id);
     }
 
@@ -47,18 +51,19 @@ class CursosController extends Controller
     
     }
 
-    public function update(Request $Request, Curso $curso){
+    public function update(CreateCurso $Request, Curso $curso){
 
-        $Request->validate([
+       /*  $Request->validate([
             'name'        => 'required',
             'description' => 'required',
             'category'    => 'required'
         ]);
-
-        $curso->name = $Request->name;
+ */
+        /* $curso->name = $Request->name;
         $curso->description = $Request->description;
         $curso->category = $Request->category;
-        $curso->save();
+        $curso->save(); */
+        $curso->update($Request->all());
         return redirect()->route('cursos.show', $curso->id);
     }
 

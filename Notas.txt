@@ -85,3 +85,6 @@ Ingresar datos a modelo con tinker
         'description' => 'required|min:10',  // Reglas de validación
         'category'    => 'required' // Reglas de validación
     ]);
+
+    <-- FormRequest -->
+    comando para crear un FormRequest: php artisan make:request <NombreRequest>
