@@ -29,6 +29,9 @@ Route::controller(CursosController::class)->group(/* ['prefix' => 'cursos', 'mid
 
     Route::get('cursos/{curso}/edit',  'edit')->name('cursos.edit');
     Route::put('cursos/{curso}',  'update')->name('cursos.update');
+
+    // eliminr un registro
+    Route::delete('cursos/{curso}',  'destroy')->name('cursos.destroy');
 });
 
 Route::get('curso/{curso}/{categoria?}', [CursosController::class, 'show_categoria']);

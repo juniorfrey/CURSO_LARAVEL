@@ -67,6 +67,11 @@ class CursosController extends Controller
         return redirect()->route('cursos.show', $curso->id);
     }
 
+    public function destroy(Curso $curso){
+        $curso->delete();
+        return redirect()->route('cursos.index');
+    }
+
     public function show_categoria($curso, $categoria=null){
         return $categoria ? "Este curso es: $curso de la categoria: $categoria" : "Bienvenido al curso: $curso";
     }
