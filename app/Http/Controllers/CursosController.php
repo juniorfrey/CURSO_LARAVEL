@@ -19,7 +19,7 @@ class CursosController extends Controller
         return view('cursos.create');
     }
 
-    public function createPost(CreateCurso $Request){
+    public function store(CreateCurso $Request){
 
        /*  $Request->validate([
             'name'        => 'required|max:255',

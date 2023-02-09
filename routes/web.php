@@ -19,20 +19,22 @@ Route::get('/', HomeController::class);
 //Route::get('/cursos', [CursosController::class, 'index']);
 
 // Grupos de rutas
-Route::controller(CursosController::class)->group(/* ['prefix' => 'cursos', 'middleware' => 'auth'], */ function (){
-    Route::get('cursos/',  'index')->name('cursos.index');
+//Route::controller(CursosController::class)->group(/* ['prefix' => 'cursos', 'middleware' => 'auth'], */ function (){
+    //Route::get('cursos/',  'index')->name('cursos.index');
 
-    Route::get('cursos/create',  'create')->name('cursos.create'); // Ruta para mostrar la vista de crear cursos.
-    Route::post('cursos', 'createPost')->name('cussos.createPost'); // Ruta para crear un nuevo curso.
+    //Route::get('cursos/create',  'create')->name('cursos.create'); // Ruta para mostrar la vista de crear cursos.
+    //Route::post('cursos', 'store')->name('cursos.store'); // Ruta para crear un nuevo curso.
 
-    Route::get('cursos/show/{show}',  'show')->name('cursos.show');
+    //Route::get('cursos/show/{show}',  'show')->name('cursos.show');
 
-    Route::get('cursos/{curso}/edit',  'edit')->name('cursos.edit');
-    Route::put('cursos/{curso}',  'update')->name('cursos.update');
+    //Route::get('cursos/{curso}/edit',  'edit')->name('cursos.edit');
+    //Route::put('cursos/{curso}',  'update')->name('cursos.update');
 
     // eliminr un registro
-    Route::delete('cursos/{curso}',  'destroy')->name('cursos.destroy');
-});
+    //Route::delete('cursos/{curso}',  'destroy')->name('cursos.destroy');
+//});
+
+Route::resource('blogs', CursosController::class)->names('cursos');
 
 Route::get('curso/{curso}/{categoria?}', [CursosController::class, 'show_categoria']);
 

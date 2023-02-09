@@ -5,7 +5,7 @@
 @section('content')
     <h1>En esta pagina podras crear un curso</h1>
 
-    <form action="{{route('cussos.createPost')}}" method="POST">
+    <form action="{{route('cursos.store')}}" method="POST">
         @csrf
         <label>nombre
             <input type="text" name="name" value="{{old('name')}}">
