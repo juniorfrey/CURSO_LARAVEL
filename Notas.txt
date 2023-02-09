@@ -53,3 +53,29 @@ Ingresar datos a modelo con tinker
 
 
 
+    <-- Mutadores -->
+          Paso 1: Importar -> use Illuminate\Database\Eloquent\Casts\Attribute;
+
+          Paso 2: Definir el mutador por ejemplo para el campo name:
+                   protected function name(): Attribute {
+                        return new Attribute(
+                             get:fn($value) => ucwords($value), // Función flecha de php
+                            set: function ($value) {
+                                return strtolower($value);
+                            }
+                        );
+                    }
+     
+     <-- Listar registros -->
+        compact($variable) // Función que se pasa a la vista para arrastrar la información de una variable, array etc.
+        foreach --> blade
+             @foreach ($cursos as $curso)
+                <li>{{$curso->name}} - {{$curso->description}} - {{$curso->category}}</li>
+            @endforeach
+        Paginación laravel:
+            {{$cursos->links()}}
+
+    
+    <-- Routes -->
+    Route::get('cursos/',  'index')->name('cursos.index'); // la función name sirve para darle un identificador a la rutas al momento de llamarlas.
+    
