@@ -88,3 +88,7 @@ Ingresar datos a modelo con tinker
 
     <-- FormRequest -->
     comando para crear un FormRequest: php artisan make:request <NombreRequest>
+
+    <-- Ver lista de rutas -->
+    php artisan r:l
+    Agrupar rutas: Route::resource('blogs', CursosController::class)->names('cursos');
