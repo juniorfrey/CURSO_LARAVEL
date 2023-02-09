@@ -21,11 +21,14 @@ Route::get('/', HomeController::class);
 // Grupos de rutas
 Route::controller(CursosController::class)->group(/* ['prefix' => 'cursos', 'middleware' => 'auth'], */ function (){
     Route::get('cursos/',  'index')->name('cursos.index');
-    
+
     Route::get('cursos/create',  'create')->name('cursos.create'); // Ruta para mostrar la vista de crear cursos.
     Route::post('cursos', 'createPost')->name('cussos.createPost'); // Ruta para crear un nuevo curso.
 
     Route::get('cursos/show/{show}',  'show')->name('cursos.show');
+
+    Route::get('cursos/{curso}/edit',  'edit')->name('cursos.edit');
+    Route::put('cursos/{curso}',  'update')->name('cursos.update');
 });
 
 Route::get('curso/{curso}/{categoria?}', [CursosController::class, 'show_categoria']);

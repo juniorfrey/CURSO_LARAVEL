@@ -9,7 +9,7 @@ class CursosController extends Controller
 {
     public function index(){
 
-        $cursos = Curso::paginate();
+        $cursos = Curso::orderBy('id','desc')->paginate();
 
         return view('cursos.index', compact('cursos'));
     }
@@ -18,8 +18,13 @@ class CursosController extends Controller
         return view('cursos.create');
     }
 
-    public function createPost(){
-        return "Crear por medio de POST";
+    public function createPost(Request $Request){
+        $curso = new Curso();
+        $curso->name = $Request->name;
+        $curso->description = $Request->description;
+        $curso->category = $Request->category;
+        $curso->save();
+        return redirect()->route('cursos.show', $curso->id);
     }
 
     public function show($id){
@@ -27,6 +32,20 @@ class CursosController extends Controller
         $curso = Curso::find($id);
 
         return view('cursos.show', compact('curso'));
+    }
+
+    public function edit(Curso $curso){
+        
+        return view('cursos.edit', compact('curso'));
+    
+    }
+
+    public function update(Request $Request, Curso $curso){
+        $curso->name = $Request->name;
+        $curso->description = $Request->description;
+        $curso->category = $Request->category;
+        $curso->save();
+        return redirect()->route('cursos.show', $curso->id);
     }
 
     public function show_categoria($curso, $categoria=null){
