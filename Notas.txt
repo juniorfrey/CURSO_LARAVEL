@@ -7,7 +7,7 @@ Ejemplos:  $table->string('name', 150)->change();
 Ejemplos:  $table->string('name', 150)->nullable->change();  // camnpo que acepta nulos.
 
 
-// Models
+<-- Models -->
 Crear : php artisan make:model <Nombre modelo>
 Ingresar datos a modelo con tinker
   Paso 1: php artisan tinker
@@ -24,3 +24,32 @@ Ingresar datos a modelo con tinker
 
   3 - Guardar la información almacenada en el objeto:
       $ejemplo->save(); // Se ejecuta el metodo save para guardar la información en la base de datos.
+
+<-- Seeders -->
+  comando: php artisan migrate:seed
+
+<-- Factory -->
+   comando: php artisan make:factory CursoFactory --model=Curso  // Se crea un factory
+   Paso 2: Ejecutar un factory:
+       archivo CursoSeeder.php // Archivo donde se utiliza
+            public function run()
+            {
+                Curso::factory(50)->create();  // Indica que llenar la tabla curso con 50 registros con la estructura definida en el modelo.
+            }
+
+<-- Eloquent -->
+   Querys: $curso = Curso::all(); // Todos los registros
+           $curso = Curso::where('category','Diseño web')->get(); // Registros filtrados por el campo category
+           $curso = Curso::where('category','Diseño web')->orderBy('id','desc')->get(); // Registros filtrados por el campo category y ordenado de manera descendente.
+           $curso = Curso::where('category','Diseño web')->orderBy('id','desc')->first(); // Traer el primer registo.
+           $curso = Curso::select('category','Diseño web')->get(); // Query para traer dos campos de la tabla.
+           $curso = Curso::select('name','description')->orderBy('name', 'asc')->where('category','Diseño web')->get();  // Combinado sentencias.
+           $curso = Curso::select('name as Title','description')->orderBy('name', 'asc')->where('category','Diseño web')->get();  // Colocando alias a los campos del select.
+           $curso = Curso::select('name as Title','description')->orderBy('name', 'asc')->where('category','Diseño web')->take(5)->get();  // Con take especificamos la cantidad de registros que quiero traerme.
+           $curso = Curso::find(5); // Metodo find.
+           $curso = Curso::where('id','>',15)->get(); // Buscar registros con id mayor a 15;
+           $curso = Curso::where('id','<>',15)->get(); // Buscar registros con id diferente a 15;
+           $curso = Curso::where('name','like','% expedita %')->get(); // Busqueda con like.
+
+
+

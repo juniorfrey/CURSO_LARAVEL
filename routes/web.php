@@ -22,7 +22,7 @@ Route::get('/', HomeController::class);
 Route::controller(CursosController::class)->group(/* ['prefix' => 'cursos', 'middleware' => 'auth'], */ function (){
     Route::get('cursos/',  'index');
     Route::get('cursos/create',  'create');
-    Route::get('cursos/{show}',  'show');
+    Route::get('cursos/show/{show}',  'show');
 });
 
 Route::get('curso/{curso}/{categoria?}', [CursosController::class, 'show_categoria']);
