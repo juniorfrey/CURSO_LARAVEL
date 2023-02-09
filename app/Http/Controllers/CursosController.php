@@ -19,6 +19,13 @@ class CursosController extends Controller
     }
 
     public function createPost(Request $Request){
+
+        $Request->validate([
+            'name'        => 'required|max:255',
+            'description' => 'required|min:10',
+            'category'    => 'required'
+        ]);
+
         $curso = new Curso();
         $curso->name = $Request->name;
         $curso->description = $Request->description;
@@ -41,6 +48,13 @@ class CursosController extends Controller
     }
 
     public function update(Request $Request, Curso $curso){
+
+        $Request->validate([
+            'name'        => 'required',
+            'description' => 'required',
+            'category'    => 'required'
+        ]);
+
         $curso->name = $Request->name;
         $curso->description = $Request->description;
         $curso->category = $Request->category;

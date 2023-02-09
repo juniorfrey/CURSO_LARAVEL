@@ -78,4 +78,10 @@ Ingresar datos a modelo con tinker
     
     <-- Routes -->
     Route::get('cursos/',  'index')->name('cursos.index'); // la función name sirve para darle un identificador a la rutas al momento de llamarlas.
-    
+
+    <-- Validar campos vacio -->
+     $Request->validate([
+        'name'        => 'required|max:255', // Reglas de validación
+        'description' => 'required|min:10',  // Reglas de validación
+        'category'    => 'required' // Reglas de validación
+    ]);

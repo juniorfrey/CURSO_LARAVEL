@@ -8,14 +8,32 @@
     <form action="{{route('cussos.createPost')}}" method="POST">
         @csrf
         <label>nombre
-            <input type="text" name="name">
-        </label><br><br>
+            <input type="text" name="name" value="{{old('name')}}">
+        </label>
+        <br>
+
+        @error('name')
+            <small>{{$message}}</small>
+        @enderror
+        <br><br>
         <label>Descripción
-            <textarea row="5" name="description"></textarea>
-        </label><br><br>
+            <textarea row="5" name="description">{{old('description')}}</textarea>
+        </label>
+        <br>
+
+        @error('description')
+            <small>{{$message}}</small>
+        @enderror
+        <br><br>
+
         <label>Categoria
-            <input type="text" name="category">
-        </label><br><br>
+            <input type="text" name="category" {{old('category')}}>
+        </label><br>
+        @error('category')
+            <small>{{$message}}</small>
+        @enderror
+
+        <br><br>
         <button type="submit">Enviar formulario</button>
     </form>
 
