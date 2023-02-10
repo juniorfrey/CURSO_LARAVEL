@@ -8,7 +8,7 @@
     <a href="{{route('cursos.index')}}">Ir a la lista</a>
     <br>
     <hr>
-    <a href="{{route('cursos.edit', $curso->id, $curso->name)}}">Editar Curso</a><br>
+    <a href="{{route('cursos.edit', $curso->id)}}">Editar Curso</a><br>
     <p><strong>Categoria:</strong> {{$curso->category}}</p>
     <p>{{$curso->description}}</p>
     <hr>

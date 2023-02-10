@@ -34,7 +34,7 @@ Route::get('/', HomeController::class);
     //Route::delete('cursos/{curso}',  'destroy')->name('cursos.destroy');
 //});
 
-Route::resource('blogs', CursosController::class)->names('cursos');
+Route::resource('cursos', CursosController::class)->names('cursos');
 
 Route::get('curso/{curso}/{categoria?}', [CursosController::class, 'show_categoria']);
 
