@@ -3,7 +3,7 @@
 @section('title', 'Curso de : '.$curso->name)
 
 @section('content')
-    <h1>Bienvenido al curso: <b>{{$curso->name}}</b></h1>
+    <h1>Bienvenido al curso de : <b>{{$curso->name}}</b></h1>
     <br>
     <a href="{{route('cursos.index')}}">Ir a la lista</a>
     <br>
